@@ -5,7 +5,10 @@ import { getAllParticipants, getParticipantById, createParticipants, patchPartic
 import createHttpError from 'http-errors';
 
 export const getParticipantsController = async (req, res) => {
-    const participants = await getAllParticipants();
+
+    const { eventId } = req.params;
+
+    const participants = await getAllParticipants(eventId);
     res.json({
         status: 200,
         message: "Successfully found participants!",

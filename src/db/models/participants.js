@@ -1,5 +1,5 @@
 
-import { model, Schema } from 'mongoose';
+import mongoose, { model, Schema } from 'mongoose';
 
 const participantSchema = new Schema(
     {
@@ -19,6 +19,11 @@ const participantSchema = new Schema(
             type: String,
             enum: ['social media', 'friends', 'found myself'],
             default: 'found myself',
+        },
+        eventId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Event",
+            required: true
         }
     },
     {

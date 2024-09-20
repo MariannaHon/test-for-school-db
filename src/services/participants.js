@@ -3,8 +3,8 @@
 import { ParticipantCollection } from '../db/models/participants.js';
 
 
-export const getAllParticipants = async () => {
-    const participants = await ParticipantCollection.find();
+export const getAllParticipants = async (eventId) => {
+    const participants = await ParticipantCollection.find({ eventId });
     return participants;
 };
 
@@ -14,7 +14,14 @@ export const getParticipantById = async (participantId) => {
 };
 
 export const createParticipants = async (payload) => {
-    const participants = await ParticipantCollection.create(payload);
+
+    const { name, email, dateOfBirth, source, eventId } = payload;
+
+    if (!eventId) {
+        throw new Error('Event ID is required to add a participant');
+    }
+
+    const participants = await ParticipantCollection.create(name, email, dateOfBirth, source, eventId);
     return participants;
 };
 
