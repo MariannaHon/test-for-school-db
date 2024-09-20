@@ -22,7 +22,7 @@ const participantSchema = new Schema(
         },
         eventId: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "participants",
+            ref: "events",
             required: true
         }
     },
