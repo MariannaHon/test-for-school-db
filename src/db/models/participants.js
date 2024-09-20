@@ -1,5 +1,5 @@
 
-import mongoose, { model, Schema } from 'mongoose';
+import { model, Schema } from 'mongoose';
 
 const participantSchema = new Schema(
     {
@@ -21,7 +21,7 @@ const participantSchema = new Schema(
             default: 'found myself',
         },
         eventId: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: "events",
             required: true
         }
