@@ -1,7 +1,7 @@
 import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
-// import router from './routers/index.js';
+import router from './routers/index.js';
 import cookieParser from 'cookie-parser';
 
 import { errorHandler } from './middlewares/errorHandler.js';
@@ -38,7 +38,7 @@ export const setupServer = () => {
         });
     });
 
-    // app.use(router);
+    app.use(router);
 
     app.use('*', notFoundHandler);
 
