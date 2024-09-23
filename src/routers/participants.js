@@ -11,7 +11,7 @@ import { registerParticipantSchema, updateParticipantSchema } from '../validatio
 import { getParticipantsController, getParticipantsByIdController, createParticipantsController, patchParticipantsController, deleteParticipantsController } from '../controllers/participants.js';
 
 
-router.get('/', ctrlWrapper(getParticipantsController),
+router.get('/:eventId', ctrlWrapper(getParticipantsController),
 );
 
 router.get('/:participantId', isValidIdPart, ctrlWrapper(getParticipantsByIdController),
