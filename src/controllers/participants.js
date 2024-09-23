@@ -8,7 +8,7 @@ export const getParticipantsController = async (req, res) => {
 
     const { eventId } = req.params;
 
-    const participants = await getAllParticipants(eventId);
+    const participants = await getAllParticipants({ eventId });
     res.json({
         status: 200,
         message: "Successfully found participants!",
@@ -33,7 +33,11 @@ export const getParticipantsByIdController = async (req, res, next) => {
 };
 
 export const createParticipantsController = async (req, res) => {
-    const participant = await createParticipants(req.body);
+
+    const { eventId } = req.params;
+
+    const data = { ...req.body, eventId };
+    const participant = await createParticipants(data);
 
     res.status(201).json({
         status: 201,

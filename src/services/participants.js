@@ -15,13 +15,13 @@ export const getParticipantById = async (participantId) => {
 
 export const createParticipants = async (payload) => {
 
-    const { name, email, dateOfBirth, source, eventId } = payload;
+    // const { name, email, dateOfBirth, source, eventId } = payload;
 
-    if (!eventId) {
-        throw new Error('Event ID is required to add a participant');
-    }
+    // if (!eventId) {
+    //     throw new Error('Event ID is required to add a participant');
+    // }
 
-    const participants = await ParticipantCollection.create(name, email, dateOfBirth, source, eventId);
+    const participants = await ParticipantCollection.create(payload);
     return participants;
 };
 

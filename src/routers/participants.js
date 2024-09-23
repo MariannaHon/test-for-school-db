@@ -17,7 +17,7 @@ router.get('/', ctrlWrapper(getParticipantsController),
 router.get('/:participantId', isValidIdPart, ctrlWrapper(getParticipantsByIdController),
 );
 
-router.post('/', validateBody(registerParticipantSchema), ctrlWrapper(createParticipantsController));
+router.post('/:eventId', validateBody(registerParticipantSchema), ctrlWrapper(createParticipantsController));
 
 
 router.patch('/:participantId', validateBody(updateParticipantSchema), isValidIdPart, ctrlWrapper(patchParticipantsController));

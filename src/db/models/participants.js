@@ -20,11 +20,7 @@ const participantSchema = new Schema(
             enum: ['social media', 'friends', 'found myself'],
             default: 'found myself',
         },
-        eventId: {
-            type: Schema.Types.ObjectId,
-            ref: "events",
-            required: true
-        }
+        eventId: { type: Schema.Types.ObjectId, ref: 'events', required: true }
     },
     {
         timestamps: true,
