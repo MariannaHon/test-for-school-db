@@ -1,10 +1,22 @@
 
 import { getAllEvents, getEventById, createEvent, patchEvent, deleteEvent } from "../services/events.js";
 
+import { parsePaginationParams } from "../utils/parsePaginationParams.js";
+import { parseSortParams } from "../utils/parseSortParams.js";
+
 import createHttpError from 'http-errors';
 
 export const getEventsController = async (req, res) => {
-    const events = await getAllEvents();
+
+    const { page, perPage } = parsePaginationParams(req.query);
+    const { sortBy, sortOrder } = parseSortParams(req.query);
+
+    const events = await getAllEvents({
+        page,
+        perPage,
+        sortBy,
+        sortOrder,
+    });
     res.json({
         status: 200,
         message: "Successfully found events!",
